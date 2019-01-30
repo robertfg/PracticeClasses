@@ -10,12 +10,31 @@ namespace PracticeClasses
     {
         static void Main(string[] args)
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine("Hello World!");
-            Console.ReadKey();
+            // Instantiate objects:
+            Movie movie = new Movie("On the Waterfront", "Elia Kazan", new string[3]{ "Marlon Brando", "Eva Marie Saint", "Karl Malden" });
+            Book book = new Book("Brideshead Revisited", "Evelyn Waugh");
+            Album album1 = new Album("Home", "The Corrs");
+            Album album2 = new Album("Revolver", "The Beatles");
+            Album album3 = new Album("Pet Sounds", "The Beach Boys");
 
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
+            Console.WriteLine(movie.GetDisplayText());
+            Console.WriteLine(book.GetDisplayText());
+            Console.WriteLine(album1.GetDisplayText());
+            Console.WriteLine(album2.GetDisplayText());
+            Console.WriteLine(album3.GetDisplayText());
+            Console.WriteLine();
+
+            album1.Loan("Robert");
+            Console.WriteLine(album1.GetDisplayText());
+
+            album1.Return();
+            Console.WriteLine(album1.GetDisplayText());
+
+            album1.Loan();
+            Console.WriteLine(album1.GetDisplayText());
+
+            Console.ReadLine();
+
         }
     }
 }
