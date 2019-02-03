@@ -42,9 +42,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Album - Copy.cs" />
     <Compile Include="Album.cs" />
+    <Compile Include="Book - Copy.cs" />
     <Compile Include="Book.cs" />
+    <Compile Include="MediaType.cs" />
+    <Compile Include="Movie - Copy.cs" />
     <Compile Include="Movie.cs" />
+    <Compile Include="Program - Copy %282%29.cs" />
     <Compile Include="Program - Copy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

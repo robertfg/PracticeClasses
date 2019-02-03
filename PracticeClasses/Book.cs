@@ -6,24 +6,26 @@ using System.Threading.Tasks;
 
 namespace PracticeClasses
 {
-    class Book
+    class Book : MediaType
     {
         // Fields
-        /*public string Title;
-        public string Author;*/
-        public readonly string Title;
         public readonly string Author;
 
+        // Call constructor
         public Book(string title, string author)
+            : base(title)
         {
-            Title = title;
             Author = author;
         }
 
         public string GetDisplayText()
         {
-            return "The book " + Title + " is by " + Author + ".";
+            string text = "Album " + Title + " is by " + Author;
+            return OnLoan
+                ? !string.IsNullOrEmpty(Loanee)
+                    ? text += " and is on loan to " + Loanee + "."
+                    : text += " and is on loan."
+                : text += ".";
         }
-
     }
 }

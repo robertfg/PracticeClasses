@@ -6,31 +6,33 @@ using System.Threading.Tasks;
 
 namespace PracticeClasses
 {
-    class Movie
+    class Movie : MediaType
     {
         // Fields
-        /*public string Title;
-        public string Director;
-        public string[] Actors;*/
-        public readonly string Title;
         public readonly string Director;
         public readonly string[] Actors;
 
+        // Call constructor
         public Movie(string title, string director, string[] actors)
+            : base(title)
         {
-            Title = title;
             Director = director;
             Actors = actors;
         }
 
         public string GetDisplayText()
         {
-            return "The movie " + Title + " was directed by "
-                + Director + " and stars "
+            string text = "The movie " + Title + " was directed by "
+                + Director + ", stars "
                 + Actors[0] + ", "
                 + Actors[1] + ", "
-                + Actors[2] + ".";
-        }
+                + Actors[2];
 
+            return OnLoan
+                ? !string.IsNullOrEmpty(Loanee)
+                    ? text += ", and is on loan to " + Loanee + "."
+                    : text += ", and is on loan."
+                : text += ".";
+        }
     }
 }
