@@ -12,7 +12,12 @@ namespace PracticeClasses
         public string Loanee;
         public bool OnLoan;
 
+        // TODO: Test 
         // Constructor
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="title"></param>
         public MediaType(string title)
         {
             if ( string.IsNullOrEmpty(title) )
@@ -23,12 +28,14 @@ namespace PracticeClasses
             Title = title;
         }
 
+        // UNDONE: Test
         // Method overload
         public void Loan()
         {
             OnLoan = true;
         }
 
+        // HACK: help
         public void Loan(string loanee)
         {
             Loanee = loanee;

@@ -6,13 +6,21 @@ using System.Threading.Tasks;
 
 namespace PracticeClasses
 {
-    class Program
+    class Program4
     {
-        static void Main(string[] args)
+        static void Main4(string[] args)
         {
             try
             {
-                MediaLibrary mediaLibrary = new MediaLibrary(new MediaType[]
+                //MediaType[] mediaType = new MediaType[5];
+                //mediaType[0] = new Movie("On the Waterfront", "Elia Kazan", new string[3] { "Marlon Brando", "Eva Marie Saint", "Karl Malden" });
+                //mediaType[1] = new Book("Brideshead Revisited", "Evelyn Waugh");
+                //mediaType[2] = new Album("Home", "The Corrs");
+                //mediaType[3] = new Album("Revolver", "The Beatles");
+                //mediaType[4] = new Album("Pet Sounds", "The Beach Boys");
+
+                //var mediaType = new MediaType[]
+                MediaType[] mediaType =
                 {
                     new Movie("On the Waterfront", "Elia Kazan",
                                 new string[3] { "Marlon Brando", "Eva Marie Saint", "Karl Malden" }),
@@ -20,22 +28,19 @@ namespace PracticeClasses
                     new Album("Home", "The Corrs"),
                     new Album("Revolver", "The Beatles"),
                     new Album("Pet Sounds", "The Beach Boys")
-                });
+                };
 
-                DetectMediaType(mediaLibrary.GetItemAt(0));
-                DetectMediaType(mediaLibrary.GetItemAt(1));
-                DetectMediaType(mediaLibrary.GetItemAt(2));
-                DetectMediaType(mediaLibrary.GetItemAt(3));
-                DetectMediaType(mediaLibrary.GetItemAt(4));
-                DetectMediaType(mediaLibrary.GetItemAt(5));
+                // Detect the media type:
+                foreach(MediaType media in mediaType)
+                {
+                    DetectMediaType(media);
+                }
 
                 // Display the media information
-                Display(mediaLibrary.GetItemAt(0));
-                Display(mediaLibrary.GetItemAt(1));
-                Display(mediaLibrary.GetItemAt(2));
-                Display(mediaLibrary.GetItemAt(3));
-                Display(mediaLibrary.GetItemAt(4));
-                Display(mediaLibrary.GetItemAt(5));
+                foreach (MediaType media in mediaType)
+                {
+                    Display(media);
+                }
 
                 //// Loan the album
                 //mediaType[0].Loan("Robert");
@@ -81,12 +86,6 @@ namespace PracticeClasses
         // Methods
         static void Display(MediaType item)
         {
-            // Check for null
-            if (item is null)
-            {
-                return;
-            }
-
             // To test the exception, comment out one of the media types.
             if (item is Album)
             {
@@ -108,27 +107,21 @@ namespace PracticeClasses
 
         static void DetectMediaType(MediaType item)
         {
-            // Check for null
-            if (item is null)
-            {
-                return;
-            }
-
             if (item is Album)
             {
                 Console.WriteLine(item.Title + " is an album.");
+            }
             else if (item is Book)
-                {
-                    Console.WriteLine(item.Title + " is a book.");
-                }
-                else if (item is Movie)
-                {
-                    Console.WriteLine(item.Title + " is a movie.");
-                }
-                else
-                {
-                    throw new Exception("Unexpected media type encountered!");
-                }
+            {
+                Console.WriteLine(item.Title + " is a book.");
+            }
+            else if (item is Movie)
+            {
+                Console.WriteLine(item.Title + " is a movie.");
+            }
+            else
+            {
+                throw new Exception("Unexpected media type encountered!");
             }
         }
     }
